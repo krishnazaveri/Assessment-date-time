@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Date time</title>
+    <style>
+        *{ box-sizing: border-box;}
+
+        .today {
+            border: 4px solid #033245;
+            width: 300px;
+            padding: 5px;
+            border-radius: 2px;
+            background-image: linear-gradient(#077ba9,#045271);
+            color: white;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .clock {width: 310px;
+            background-image: linear-gradient(169deg,#0a945d, yellow,#7a0a7e);
+            text-align: center;
+            padding: 5px;
+        }
+            
+        #clock {
+        	font-size: 30px;
+        	width: 300px;
+        	
+        	/* border: 4px solid black; */
+        	border-radius: 2px;
+            background:grey;
+            
+            
+        }
+    </style>
+</head>
+<body>
+
+    <p id="today" class="today"></p>
+    <br><br>
+    <div class="clock">
+    <div id="clock"></div></div>
+
+    <script>
+        const d=new Date();
+        document.getElementById("today").innerHTML =d.toDateString();
+
+        //console.log(d)
+
+
+
+        /* setInterval(showTime, 1000);
+        function showTime() {
+        	let time = new Date();
+        	let hour = time.getHours();
+        	let min = time.getMinutes();
+        	let sec = time.getSeconds();
+        	am_pm = "AM";
+        
+        	if (hour > 12) {
+        		hour -= 12;
+        		am_pm = "PM";
+        	}
+        	if (hour == 0) {
+        		hr = 12;
+        		am_pm = "AM";
+        	}
+        
+        	hour = hour < 10 ? "0" + hour : hour;
+        	min = min < 10 ? "0" + min : min;
+        	sec = sec < 10 ? "0" + sec : sec;
+        
+        	let currentTime = hour + ":"
+        		+ min + ":" + sec + am_pm;
+        
+        	document.getElementById("clock")
+        		.innerHTML = currentTime;
+        }
+        
+        showTime(); */
+
+
+        function currentTime() {
+  var date = new Date(); /* creating object of Date class */
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+  var midday = "AM";
+  midday = (hour >= 12) ? "PM" : "AM"; /* assigning AM/PM */
+  hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12): hour); /* assigning hour in 12-hour format */
+  hour = updateTime(hour);
+  min = updateTime(min);
+  sec = updateTime(sec);
+  document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */
+    var t = setTimeout(currentTime, 1000); /* setting timer */
+}
+
+function updateTime(k) { /* appending 0 before time elements if less than 10 */
+  if (k < 10) {
+    return "0" + k;
+  }
+  else {
+    return k;
+  }
+}
+
+currentTime();
+    </script>
+
+  
+    
+</body>
+</html>
